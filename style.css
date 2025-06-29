@@ -1,0 +1,193 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.bg{
+     background: url("./image/bg.jpg") no-repeat center center/cover;
+}
+header{
+    text-align: center;
+    padding: 14px;
+  
+}
+header p{
+   background: linear-gradient(to bottom, #00ff40 , #000000 );
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   font-size: 19.9px;
+  
+}
+section{
+   
+    height: 90vh;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+   
+}
+h1{
+    font-size: 30px;
+    color: #27e027;
+}
+.image{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.image img{
+    width: 60%;
+    animation: circle 10s linear  infinite;
+  
+    border-radius: 50%;
+    /*blur the border*/
+    box-shadow: 0 0 10px 10px rgb(79, 189, 79);
+
+       
+}
+@keyframes circle {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+.sura-list{
+   
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    overflow-y: scroll;
+    border: 2px dashed #27e027;
+    padding: 10px;
+    border-radius: 19px;
+    
+}
+.sura-list::-webkit-scrollbar{
+    display: none;
+}
+.sura-list a{
+    text-decoration: none;
+    color: whitesmoke;
+
+    background-color: #02f733;
+background-image: linear-gradient(315deg, #2ed42b 0%, #0dc803 74%);
+  border: none;
+  z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.35s ease-in-out;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+.sura-list a:after{
+    position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+   background-color: #4dccc6;
+background-image: linear-gradient(315deg, #16f13e 0%, #75cc79 74%);
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.35s ease-in-out;
+}
+
+.sura-list a:hover {
+  color: #fff;
+}
+.sura-list a:hover:after {
+  top: 0;
+  height: 100%;
+}
+.sura-list a:active {
+  top: 2px;
+}
+footer{
+    text-align: center;
+    padding: 14px;
+    background: #004d00;
+    color: white;
+}
+footer h1{
+    font-size: 30px;
+    color: #3cf63c;
+}
+.contact{
+    display: flex;
+    flex-direction: row;
+    gap: 29px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+}
+.contact div{
+    display: flex;
+    gap: 10px;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 190px;
+  height: 40px;
+  font-weight: bold;
+  border-bottom: 4px solid #179e43;
+  transition: 0.3s;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.4);
+  background-color: #19d256;
+}
+
+.contact div:hover{
+    box-shadow: 0 0 rgba(0, 0, 0, 0.4);
+  border-bottom-width: 2px;
+  transform: translateY(2px);
+}
+.contact div i{
+    background: linear-gradient(315deg, #027706 0%, #c85203 74%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 20px;
+}
+.contact div a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    
+}
+.contact div:active{
+   background: wheat;
+  border-bottom-width: 2px;
+  transform: translateY(2px);
+}
+@media screen and (max-width: 800px) {
+    section{
+        flex-direction: column-reverse;
+        gap: 30px;
+        height: 110vh;
+    }
+    .image{
+        width: 100%;
+    }
+    .sura-list{
+        width: 100%;
+    }
+    
+}
