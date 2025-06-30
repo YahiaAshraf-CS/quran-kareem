@@ -19,13 +19,13 @@
 
    <div class="sura">
       <div class="image">
-         <img src="abd-el-baset2.jpg" alt="الشيخ عبد الباسط" loading="lazy">
+         <img src="abd-el-baset2.jpg" alt="الشيخ عبد الباسط" id="img" loading="lazy">
       </div>
-
+      <div style="width: 100%;">
       <audio id="audio-player" controls>
-         <source id="audio-source" src="https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/001.mp3" type="audio/mp3">
+         <source id="audio-source" src="https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/001.mp3" type="audio/mp3" >
          متصفحك لا يدعم تشغيل الصوت
-      </audio>
+      </audio></div>
 
       <div class="back">
          <a href="index.html" class="btn">الرجوع للقائمة</a>
@@ -58,7 +58,7 @@ const suras = [
 
 let currentIndex = suras.indexOf(sura);
 let suraNumber = currentIndex + 1;
-
+let image= document.getElementById("img");
 function updatePlayer(suraName) {
   document.getElementById("sura-name").textContent = "سورة " + suraName;
 
@@ -76,6 +76,7 @@ function updatePlayer(suraName) {
   const player = document.getElementById("audio-player");
   player.load();
   player.play();
+  
 }
 
 function changeSura(suraName) {
@@ -96,6 +97,21 @@ document.getElementById("audio-player").addEventListener("ended", function () {
     updatePlayer(suras[currentIndex]);
   }
 });
+
+
+let play=document.getElementById("audio-player");
+play.addEventListener("pause", function () {
+  
+  image.style.animationPlayState=" paused";
+});
+
+play.addEventListener("playing", function () {
+  
+  image.style.animationPlayState=" running";
+
+});
+
+  
 
   </script>
 </body>
