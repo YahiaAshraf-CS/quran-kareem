@@ -19,7 +19,7 @@ body {
         background-position: center;
         background-blend-mode: color-burn;
         overflow-y: scroll;
-        overflow-x: hidden;
+        
 }
 
 .sura {
@@ -168,7 +168,7 @@ audio::-webkit-media-controls-panel {
 
 @media screen and (max-width: 768px) {
     .image img {
-        width: 90%;
+        width: 70%;
     }
 
     audio,
@@ -186,7 +186,7 @@ audio::-webkit-media-controls-panel {
         background-blend-mode: color-burn;
         width: 100%;
         height: auto;
-        overflow-x: hidden;
+       
     }
 
     .sura {
