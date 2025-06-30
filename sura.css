@@ -143,22 +143,25 @@ audio::-webkit-media-controls-panel {
     .back .btn {
         width: 100%;
     }
+    
 
     body {
         padding: 10px;
         background:  url("bg3.png"), linear-gradient(to top, #04eb04, #f8b703);
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        background-position: center;
+        background-position: fixed;
         background-blend-mode: color-burn;
         width: 100%;
         height: auto;
+        overflow-x: hidden;
     }
     .sura {
         padding: 25px;
         width: 100%;
         height: 100vh;
-
+        overflow-x: hidden;
+        overflow-y: scroll;
     }
     .back {
         padding: 5px;
