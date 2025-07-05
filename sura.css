@@ -156,7 +156,7 @@ audio,
 .back .btn:active {
     transform: translateY(2px);
 }
-select{
+#option{
 
     padding:15px;
     border-radius: 10px;
@@ -224,6 +224,7 @@ select{
         gap: 20px;
         flex-wrap: wrap;
     }
+    
     
 }
 
