@@ -36,6 +36,7 @@ body {
     margin: auto;
     padding: 10px;
     flex-wrap: wrap;
+    height: 100vh;
 }
 
 .image img {
@@ -198,8 +199,9 @@ audio,
         background-position: fixed;
         background-blend-mode: color-burn;
         width: 100%;
-        height: auto;
+        height: 100dvh;
         overflow-x: hidden;
+        overflow-y: scroll;
     }
     .sura {
         padding: 25px;
@@ -255,14 +257,16 @@ audio,
         background-position: center;
         background-blend-mode: color-burn;
         width: 100%;
-        height: auto;
+        height: 100dvh;
+        overflow-x: hidden;
+        overflow-y: scroll;
        
     }
 
     .sura {
         padding: 5px;
         width: 100%;
-        height: auto;
+        height: 100dvh;
         overflow-x: hidden;
         overflow-y: scroll;
     }
