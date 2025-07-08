@@ -10,12 +10,12 @@ body {
     text-align: center;
    
     width: 100%;
-    height: 110vh;
-    max-width: 1000px;
+    height: auto;
+    
     margin: auto;
     background:  url("bg3.png"), linear-gradient(to top, #04eb04, #f8b703);
         background-repeat: no-repeat;
-        background-size: 100% 100%;
+        background-size:cover;
         background-position: center;
         background-attachment: fixed;
         background-blend-mode: color-burn;
@@ -36,9 +36,13 @@ body {
     margin: auto;
     padding: 10px;
     flex-wrap: wrap;
-    height: 100vh;
+    height:auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-
+.sura::-webkit-scrollbar {
+    display: none;
+}
 .image img {
     width: 80%;
     max-width: 350px;
@@ -284,5 +288,5 @@ audio,
     .back .btn {
         padding: 20px;
     }
-    
+
 }
