@@ -62,28 +62,32 @@ const suras = [
 
 let currentIndex = suras.indexOf(sura);
 let suraNumber = currentIndex + 1;
-let currentIndex2 = suras.indexOf(sura);
-let suraNumber2 = currentIndex2 + 1;
-let image= document.getElementById("img");
-let option=document.getElementById("option");
+let reciter = "abd-el-baset"; // default
+
+let image = document.getElementById("img");
+let option = document.getElementById("option");
+
+function getAudioUrl(suraNumber, reciter) {
+  let padded = "";
+  if (suraNumber <= 9) padded = "00" + suraNumber;
+  else if (suraNumber <= 99) padded = "0" + suraNumber;
+  else padded = "" + suraNumber;
+
+  if (reciter === "abd-el-baset") {
+    return `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${padded}.mp3`;
+  } else if (reciter === "badr-el-Turki") {
+    return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
+  }
+}
+
 function updatePlayer(suraName) {
   document.getElementById("sura-name").textContent = "سورة " + suraName;
-
-  if (suraNumber <= 9) {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/00" + suraNumber + ".mp3";
-  } else if (suraNumber >= 10 && suraNumber <= 99) {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/0" + suraNumber + ".mp3";
-  } else {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/" + suraNumber + ".mp3";
-  }
+  const url = getAudioUrl(suraNumber, reciter);
+  document.getElementById("audio-source").src = url;
 
   const player = document.getElementById("audio-player");
   player.load();
   player.play();
-  
 }
 
 function changeSura(suraName) {
@@ -92,7 +96,6 @@ function changeSura(suraName) {
   updatePlayer(suraName);
 }
 
-// update the player with the first sura
 if (currentIndex !== -1) {
   updatePlayer(suras[currentIndex]);
 }
@@ -105,131 +108,28 @@ document.getElementById("audio-player").addEventListener("ended", function () {
   }
 });
 
+let play = document.getElementById("audio-player");
 
-let play=document.getElementById("audio-player");
 play.addEventListener("pause", function () {
-  
-  image.style.animationPlayState=" paused";
+  image.style.animationPlayState = "paused";
 });
 
 play.addEventListener("playing", function () {
-  
-  image.style.animationPlayState=" running";
-
+  image.style.animationPlayState = "running";
 });
 
 option.addEventListener("change", function () {
-  if (option.value=="abd-el-baset"){
-    image.setAttribute("src","abd-el-baset2.jpg");
+  reciter = option.value;
 
-     function updatePlayer(suraName) {
-  document.getElementById("sura-name").textContent = "سورة " + suraName;
-
-  if (suraNumber <= 9) {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/00" + suraNumber + ".mp3";
-  } else if (suraNumber >= 10 && suraNumber <= 99) {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/0" + suraNumber + ".mp3";
-  } else {
-    document.getElementById("audio-source").src =
-      "https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/" + suraNumber + ".mp3";
+  if (reciter === "abd-el-baset") {
+    image.setAttribute("src", "abd-el-baset2.jpg");
+  } else if (reciter === "badr-el-Turki") {
+    image.setAttribute("src", "badr2.jpg");
   }
 
-  const player = document.getElementById("audio-player");
-  player.load();
-  player.play();
-  
-}
-
-function changeSura(suraName) {
-  currentIndex = suras.indexOf(suraName);
-  suraNumber = currentIndex + 1;
-  updatePlayer(suraName);
-}
-
-// update the player with the first sura
-if (currentIndex !== -1) {
   updatePlayer(suras[currentIndex]);
-}
-
-document.getElementById("audio-player").addEventListener("ended", function () {
-  currentIndex++;
-  if (currentIndex < suras.length) {
-    suraNumber = currentIndex + 1;
-    updatePlayer(suras[currentIndex]);
-  }
 });
 
-
-let play=document.getElementById("audio-player");
-play.addEventListener("pause", function () {
-  
-  image.style.animationPlayState=" paused";
-});
-
-play.addEventListener("playing", function () {
-  
-  image.style.animationPlayState=" running";
-
-});
-  }
-  else if (option.value=="badr-el-Turki"){
-    image.setAttribute("src","badr2.jpg")
-     function updatePlayer(suraName) {
-  document.getElementById("sura-name").textContent = "سورة " + suraName;
-
-  if (suraNumber2 <= 9) {
-    document.getElementById("audio-source").src =
-      "https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/00" + suraNumber2 + ".mp3";
-  } else if (suraNumber2 >= 10 && suraNumber2 <= 99) {
-    document.getElementById("audio-source").src =
-      "https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/0" + suraNumber2 + ".mp3";
-  } else {
-    document.getElementById("audio-source").src =
-      "https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/" + suraNumber2 + ".mp3";
-  }
-
-  const player = document.getElementById("audio-player");
-  player.load();
-  player.play();
-  
-}
-
-function changeSura(suraName) {
-  currentIndex2 = suras.indexOf(suraName);
-  suraNumber = currentIndex2 + 1;
-  updatePlayer(suraName);
-}
-
-// update the player with the first sura
-if (currentIndex2 !== -1) {
-  updatePlayer(suras[currentIndex2]);
-}
-
-document.getElementById("audio-player").addEventListener("ended", function () {
-  currentIndex2++;
-  if (currentIndex2 < suras.length) {
-    suraNumber2 = currentIndex2 + 1;
-    updatePlayer(suras[currentIndex2]);
-  }
-});
-
-
-let play=document.getElementById("audio-player");
-play.addEventListener("pause", function () {
-  
-  image.style.animationPlayState=" paused";
-});
-
-play.addEventListener("playing", function () {
-  
-  image.style.animationPlayState=" running";
-
-});
-  }
- 
-})
 
 
   </script>
