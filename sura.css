@@ -73,7 +73,7 @@ audio::-webkit-media-controls-panel {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 16px;
 }
 
 .back {
@@ -81,7 +81,7 @@ audio::-webkit-media-controls-panel {
   max-width: 400px;
   margin: auto;
   padding: 10px;
-  
+
 }
 
 .back .btn {
