@@ -35,6 +35,7 @@ body {
   display: none;
 }
 
+
 .image img {
   width: 80%;
   max-width: 350px;
@@ -80,6 +81,7 @@ audio::-webkit-media-controls-panel {
   max-width: 400px;
   margin: auto;
   padding: 10px;
+  
 }
 
 .back .btn {
