@@ -15,7 +15,7 @@
 
 </head>
 <body>
-   <h2 id="sura-name" style="color: #01c60e;   font-size: 35px; font-weight: bolder; padding: 53px;">
+   <h2 id="sura-name" style="color: #80ef88;   font-size: 35px; font-weight: bolder; padding: 53px;">
       اسم السورة
    </h2>
 
@@ -35,6 +35,9 @@
       <select name="sheikh" id="option">
         <option value="abd-el-baset" >عبد الباسط عبد الصمد</option>
         <option value="badr-el-Turki">بدر التركي</option>
+        <option value="fares">فارس عباد</option>
+        <option value="manshawy">المنشاوي</option>
+
       </select></div>
    </div>
 </body>
@@ -79,6 +82,12 @@ function getAudioUrl(suraNumber, reciter) {
     return `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${padded}.mp3`;
   } else if (reciter === "badr-el-Turki") {
     return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
+  }
+  else if (reciter === "fares"){
+    return `https://server8.mp3quran.net/frs_a/${padded}.mp3`;
+  }
+  else if( reciter === "manshawy"){
+    return `https://server10.mp3quran.net/minsh/${padded}.mp3`;
   }
 }
 
@@ -127,6 +136,12 @@ option.addEventListener("change", function () {
     image.setAttribute("src", "abd-el-baset2.jpg");
   } else if (reciter === "badr-el-Turki") {
     image.setAttribute("src", "badr2.jpg");
+  }
+  else if (reciter === "fares"){
+    image.setAttribute("src", "fares.jpg");
+  }
+  else if( reciter === "manshawy"){
+    image.setAttribute("src", "menshawy.jpg");
   }
 
   updatePlayer(suras[currentIndex]);
