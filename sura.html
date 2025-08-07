@@ -37,6 +37,8 @@
         <option value="badr-el-Turki">بدر التركي</option>
         <option value="fares">فارس عباد</option>
         <option value="manshawy">المنشاوي</option>
+        <option value="ayoub">محمد أيوب</option>
+
 
       </select></div>
    </div>
@@ -88,6 +90,9 @@ function getAudioUrl(suraNumber, reciter) {
   }
   else if( reciter === "manshawy"){
     return `https://server10.mp3quran.net/minsh/${padded}.mp3`;
+  }
+  else if( reciter === "ayoub"){
+    return `https://server8.mp3quran.net/ayyub/${padded}.mp3`;
   }
 }
 
@@ -142,6 +147,9 @@ option.addEventListener("change", function () {
   }
   else if( reciter === "manshawy"){
     image.setAttribute("src", "menshawy.jpg");
+  }
+  else if( reciter === "ayoub"){
+    image.setAttribute("src", "mohamed.jpg");
   }
 
   updatePlayer(suras[currentIndex]);

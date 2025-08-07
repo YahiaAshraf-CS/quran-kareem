@@ -40,8 +40,8 @@ h1{
 
 }
 .image img{
-    width: 60%;
-    animation: circle 10s linear  infinite;
+    width: 58%;
+   
   
     border-radius: 50%;
     /*blur the border*/
@@ -49,15 +49,7 @@ h1{
 
        
 }
-@keyframes circle {
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-    
-} 
+
 
 .sura-list{
    
