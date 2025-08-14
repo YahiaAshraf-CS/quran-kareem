@@ -25,7 +25,7 @@ body {
   justify-content: center;
   gap: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 1100px;
   margin: auto;
   padding: 10px;
   flex-wrap: wrap;
@@ -55,6 +55,7 @@ audio {
   padding: 19px;
   border: none;
   margin-bottom: 20px;
+  max-width: 1900px;
 }
 
 audio::-webkit-media-controls-panel {
@@ -66,14 +67,37 @@ audio::-webkit-media-controls-panel {
   background: linear-gradient(315deg, #027706 0%, #59f803 74%);
   border-radius: 15px;
   width: 100%;
+  max-width: 1400px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 20px;
 }
 
 .options {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 30px;
+}
+.options select {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(315deg, #03ad08 0%, #328a03 74%);
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.options select option {
+
+  font-size: 19px;
+  font-weight: bolder;
 }
 
 .back {

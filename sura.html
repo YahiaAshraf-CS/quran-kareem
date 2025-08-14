@@ -15,7 +15,7 @@
 
 </head>
 <body>
-   <h2 id="sura-name" style="color: #80ef88;   font-size: 35px; font-weight: bolder; padding: 53px;">
+   <h2 id="sura-name" style="color: #0ff902;   font-size: 35px; font-weight: bolder; padding: 53px;">
       اسم السورة
    </h2>
 
@@ -38,6 +38,9 @@
         <option value="fares">فارس عباد</option>
         <option value="manshawy">المنشاوي</option>
         <option value="ayoub">محمد أيوب</option>
+        <option value="mohamed">محمد الفقيه</option>
+        <option value="maher"> ماهر المعيقلي</option>
+        <option value="yasser"> ياسر الدوسري</option>
 
 
       </select></div>
@@ -93,6 +96,15 @@ function getAudioUrl(suraNumber, reciter) {
   }
   else if( reciter === "ayoub"){
     return `https://server8.mp3quran.net/ayyub/${padded}.mp3`;
+  }
+  else if( reciter === "mohamed"){
+    return `https://ia801301.us.archive.org/12/items/002_20231230/${padded}.mp3`;
+  }
+  else if( reciter === "maher"){
+    return `https://server12.mp3quran.net/maher/${padded}.mp3`;
+  }
+  else if( reciter === "yasser"){
+    return `https://server11.mp3quran.net/yasser/${padded}.mp3`;
   }
 }
 
@@ -150,6 +162,15 @@ option.addEventListener("change", function () {
   }
   else if( reciter === "ayoub"){
     image.setAttribute("src", "mohamed.jpg");
+  }
+  else if( reciter === "mohamed"){
+    image.setAttribute("src", "mf.png");
+  }
+  else if( reciter === "maher"){
+    image.setAttribute("src", "maher.png");
+  }
+  else if( reciter === "yasser"){
+    image.setAttribute("src", "yasser.png");
   }
 
   updatePlayer(suras[currentIndex]);
