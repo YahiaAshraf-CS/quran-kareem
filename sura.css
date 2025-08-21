@@ -25,7 +25,7 @@ body {
   justify-content: center;
   gap: 20px;
   width: 100%;
-  max-width: 1100px;
+ 
   margin: auto;
   padding: 10px;
   flex-wrap: wrap;
@@ -55,7 +55,7 @@ audio {
   padding: 19px;
   border: none;
   margin-bottom: 20px;
-  max-width: 1900px;
+  max-width: 2400px; 
 }
 
 audio::-webkit-media-controls-panel {
@@ -67,7 +67,7 @@ audio::-webkit-media-controls-panel {
   background: linear-gradient(315deg, #027706 0%, #59f803 74%);
   border-radius: 15px;
   width: 100%;
-  max-width: 1400px;
+  
   padding: 10px;
   border: none;
   margin-bottom: 20px;

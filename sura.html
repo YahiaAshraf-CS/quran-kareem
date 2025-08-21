@@ -33,7 +33,9 @@
          <a href="index.html" class="btn">الرجوع للقائمة</a>
       </div>
       <select name="sheikh" id="option">
-        <option value="abd-el-baset" >عبد الباسط عبد الصمد</option>
+        <option value="abd-el-basett" >عبد الباسط عبد الصمد مجود</option>
+        <option value="abd">عبد الباسط عبد الصمد مرتل</option>
+
         <option value="badr-el-Turki">بدر التركي</option>
         <option value="fares">فارس عباد</option>
         <option value="manshawy">المنشاوي</option>
@@ -41,6 +43,8 @@
         <option value="mohamed">محمد الفقيه</option>
         <option value="maher"> ماهر المعيقلي</option>
         <option value="yasser"> ياسر الدوسري</option>
+        <option value="sodas"> عبد الرحمن السديس</option>
+        <option value="gaber">علي جابر</option>
 
 
       </select></div>
@@ -72,7 +76,7 @@ const suras = [
 
 let currentIndex = suras.indexOf(sura);
 let suraNumber = currentIndex + 1;
-let reciter = "abd-el-baset"; // default
+let reciter = "abd-el-basett"; // default
 
 let image = document.getElementById("img");
 let option = document.getElementById("option");
@@ -83,9 +87,13 @@ function getAudioUrl(suraNumber, reciter) {
   else if (suraNumber <= 99) padded = "0" + suraNumber;
   else padded = "" + suraNumber;
 
-  if (reciter === "abd-el-baset") {
+  if (reciter === "abd-el-basett") {
     return `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${padded}.mp3`;
-  } else if (reciter === "badr-el-Turki") {
+  }
+  else if (reciter === "abd") {/*https://server7.mp3quran.net/basit/002.mp3*/
+    return `https://server7.mp3quran.net/basit/${padded}.mp3`;
+  }
+  else if (reciter === "badr-el-Turki") {
     return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
   }
   else if (reciter === "fares"){
@@ -105,6 +113,12 @@ function getAudioUrl(suraNumber, reciter) {
   }
   else if( reciter === "yasser"){
     return `https://server11.mp3quran.net/yasser/${padded}.mp3`;
+  }
+  else if( reciter === "sodas"){
+    return `https://server11.mp3quran.net/sds/${padded}.mp3`;
+  }
+  else if(reciter=="gaber"){
+    return `https://server11.mp3quran.net/a_jbr/${padded}.mp3`;
   }
 }
 
@@ -149,9 +163,14 @@ play.addEventListener("playing", function () {
 option.addEventListener("change", function () {
   reciter = option.value;
 
-  if (reciter === "abd-el-baset") {
+  if (reciter === "abd-el-basett") {
     image.setAttribute("src", "abd-el-baset2.jpg");
-  } else if (reciter === "badr-el-Turki") {
+  }
+  
+  else if (reciter === "abd") {
+    image.setAttribute("src", "abd-el-baset1.jpg");
+  }
+  else if (reciter === "badr-el-Turki") {
     image.setAttribute("src", "badr2.jpg");
   }
   else if (reciter === "fares"){
@@ -171,6 +190,12 @@ option.addEventListener("change", function () {
   }
   else if( reciter === "yasser"){
     image.setAttribute("src", "yasser.png");
+  }
+  else if( reciter === "sodas"){
+    image.setAttribute("src", "https://s-media-cache-ak0.pinimg.com/564x/83/9f/a1/839fa1a43d6988809d0796f619eba1c8.jpg");
+  }
+  else if(reciter=="gaber"){
+    image.setAttribute("src", "https://i.pinimg.com/564x/43/57/d3/4357d32cc152d4e3b8f8c37fd525b806.jpg");
   }
 
   updatePlayer(suras[currentIndex]);
