@@ -9,13 +9,14 @@ body {
   text-align: center;
   width: 100%;
   margin: auto;
-  background: linear-gradient(to top, #04eb04, #f8b703), url("bg3.png");
+  background: linear-gradient(to top, #F9F9F9, #c8b170), url("bg3.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-blend-mode: color-burn;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .sura {
@@ -25,7 +26,7 @@ body {
   justify-content: center;
   gap: 20px;
   width: 100%;
- 
+
   margin: auto;
   padding: 10px;
   flex-wrap: wrap;
@@ -44,8 +45,13 @@ body {
 }
 
 @keyframes circle {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 audio {
@@ -55,7 +61,7 @@ audio {
   padding: 19px;
   border: none;
   margin-bottom: 20px;
-  max-width: 2400px; 
+  max-width: 2400px;
 }
 
 audio::-webkit-media-controls-panel {
@@ -67,7 +73,7 @@ audio::-webkit-media-controls-panel {
   background: linear-gradient(315deg, #027706 0%, #59f803 74%);
   border-radius: 15px;
   width: 100%;
-  
+
   padding: 10px;
   border: none;
   margin-bottom: 20px;
@@ -82,6 +88,7 @@ audio::-webkit-media-controls-panel {
   justify-content: center;
   gap: 30px;
 }
+
 .options select {
   width: 90%;
   max-width: 400px;
@@ -112,10 +119,10 @@ audio::-webkit-media-controls-panel {
   width: 100%;
   max-width: 300px;
   text-decoration: none;
-  color: black;
+  color: #222;
   font-size: 18px;
   font-weight: bolder;
-  background: linear-gradient(315deg, #027706 0%, #59f803 74%);
+  background: #18d557;
   border: none;
   padding: 25px;
   border-radius: 8px;
@@ -133,7 +140,7 @@ audio::-webkit-media-controls-panel {
   left: 0;
   z-index: -1;
   border-radius: 5px;
-  background: linear-gradient(315deg, #16f13e 0%, #75cc79 74%);
+  background: #4fdc56;
   box-shadow:
     -7px -7px 20px 0px #fff9,
     -4px -4px 5px 0px #fff9,
@@ -144,6 +151,8 @@ audio::-webkit-media-controls-panel {
 
 .back .btn:hover {
   color: white;
+  background: #5bed62;
+
 }
 
 .back .btn:hover:after {
@@ -157,11 +166,16 @@ audio::-webkit-media-controls-panel {
 #option {
   padding: 15px;
   border-radius: 10px;
-  background: linear-gradient(315deg, #25eb2c, #59f803);
+  background: #55da5c;
   color: black;
   font-size: 17.2px;
   font-weight: bolder;
   text-align: center;
+  transition: all 0.35s ease-in-out;
+}
+
+#option:hover {
+  background-color: #6dfd74;
 }
 
 /* Responsive Design */
@@ -231,9 +245,3 @@ audio::-webkit-media-controls-panel {
     width: 90%;
   }
 }
-   
-
-
-
-
-
