@@ -45,6 +45,11 @@
         <option value="yasser"> ياسر الدوسري</option>
         <option value="sodas"> عبد الرحمن السديس</option>
         <option value="gaber">علي جابر</option>
+        <option value="nasser"> ناصر القطامي </option>
+        <option value="saeed">سعد الغامدي</option>
+        <option value="hossary">محمود خليل الحصري</option>
+        <option value="ban">محمود علي البنا</option>
+       
 
 
       </select></div>
@@ -119,6 +124,18 @@ function getAudioUrl(suraNumber, reciter) {
   }
   else if(reciter=="gaber"){
     return `https://server11.mp3quran.net/a_jbr/${padded}.mp3`;
+  }
+  else if(reciter=="nasser"){
+    return `https://server6.mp3quran.net/qtm/${padded}.mp3`;
+  }
+  else if(reciter=="saeed"){
+    return`https://server7.mp3quran.net/s_gmd/${padded}.mp3`;
+  }
+  else if(reciter=="hossary"){
+    return `https://server13.mp3quran.net/husr/${padded}.mp3`;
+  }
+  else if(reciter=="ban"){
+    return `https://archive.org/download/golmami2005_yahoo_002_20180411_2112/${padded}.mp3`;
   }
 }
 
@@ -197,7 +214,18 @@ option.addEventListener("change", function () {
   else if(reciter=="gaber"){
     image.setAttribute("src", "https://i.pinimg.com/564x/43/57/d3/4357d32cc152d4e3b8f8c37fd525b806.jpg");
   }
-
+  else if(reciter=="nasser"){
+    image.setAttribute("src", "https://i.pinimg.com/564x/6f/2d/35/6f2d3586e913233f1f03ade207398949.jpg");
+  }
+  else if(reciter=="saeed"){
+    image.setAttribute("src", "https://i.pinimg.com/564x/14/56/7f/14567fa0c053c4f29d6b0e606f232424.jpg");
+  }
+  else if(reciter=="hossary"){
+    image.setAttribute("src", "https://i.pinimg.com/564x/ed/51/28/ed51283cc159958f430a484d87606738.jpg");
+  }
+  else if(reciter=="ban"){
+    image.setAttribute("src", "https://i.pinimg.com/564x/29/67/b3/2967b3fbc1ce1f5a70874288d34317bf.jpg");
+  }
   updatePlayer(suras[currentIndex]);
 });
 
