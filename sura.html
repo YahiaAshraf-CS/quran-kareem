@@ -211,10 +211,14 @@ let play = document.getElementById("audio-player");
 
 play.addEventListener("pause", function () {
   image.style.animationPlayState = "paused";
+  i.classList.remove("fa-pause");
+  i.classList.add("fa-play"); 
 });
 
 play.addEventListener("playing", function () {
   image.style.animationPlayState = "running";
+  i.classList.remove("fa-play");
+  i.classList.add("fa-pause");
 });
 
 option.addEventListener("change", function () {
