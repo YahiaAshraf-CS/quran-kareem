@@ -189,6 +189,19 @@ audio::-webkit-media-controls-panel {
 
 .control i {
   font-size: 25px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5bed62;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.control i:hover {
+  background-color: #6dfd74;
 }
 
 .control a {
@@ -238,6 +251,11 @@ audio::-webkit-media-controls-panel {
 
   .control i {
     font-size: 20px;
+    border-radius: 50%;
+    background-color: #5bed62;
+    width: 40px;
+    height: 40px;
+    transition: all 0.35s ease-in-out;
   }
 
   .control a {
@@ -269,6 +287,11 @@ audio::-webkit-media-controls-panel {
 
   .control i {
     font-size: 20px;
+    border-radius: 50%;
+    background-color: #5bed62;
+    width: 40px;
+    height: 40px;
+    transition: all 0.35s ease-in-out;
   }
 
   .control a {
