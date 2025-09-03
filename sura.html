@@ -27,7 +27,15 @@
       <audio id="audio-player" controls>
          <source id="audio-source" src="https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/001.mp3" type="audio/mp3" >
          متصفحك لا يدعم تشغيل الصوت
-      </audio></div>
+      </audio>
+      <br>
+      <div class="control">
+        <a id="prev"><i class="fas fa-caret-right"></i></a>
+        <a id="play"><i id="pause" class="fa-solid fa-pause"></i></a>
+        <a id="next"><i class="fas fa-caret-left"></i></a>
+      </div>
+      <br>
+    </div>
        <div class="options">
       <div class="back">
          <a href="index.html" class="btn">الرجوع للقائمة</a>
@@ -85,6 +93,10 @@ let reciter = "abd-el-basett"; // default
 
 let image = document.getElementById("img");
 let option = document.getElementById("option");
+let p = document.getElementById("play");
+let i=document.getElementById("pause");
+let next = document.getElementById("prev");
+let prev = document.getElementById("next");
 
 function getAudioUrl(suraNumber, reciter) {
   let padded = "";
@@ -148,6 +160,34 @@ function updatePlayer(suraName) {
   player.load();
   player.play();
 }
+p.addEventListener("click", function () {
+  const player = document.getElementById("audio-player");
+  if (player.paused) {
+    player.play();
+    i.classList.remove("fa-play");
+    i.classList.add("fa-pause");
+  } else {
+    player.pause();
+    i.classList.remove("fa-pause");
+    i.classList.add("fa-play");
+  }
+
+})
+next.addEventListener("click", function () {
+  currentIndex++;
+  if (currentIndex < suras.length) {
+    suraNumber = currentIndex + 1;
+    updatePlayer(suras[currentIndex]);
+  }
+});
+
+prev.addEventListener("click", function () {
+  currentIndex--;
+  if (currentIndex >= 0) {
+    suraNumber = currentIndex + 1;
+    updatePlayer(suras[currentIndex]);
+  }
+})
 
 function changeSura(suraName) {
   currentIndex = suras.indexOf(suraName);
