@@ -159,6 +159,8 @@ function updatePlayer(suraName) {
   const player = document.getElementById("audio-player");
   player.load();
   player.play();
+  i.classList.remove("fa-play");
+  i.classList.add("fa-pause");
 }
 p.addEventListener("click", function () {
   const player = document.getElementById("audio-player");
@@ -166,7 +168,7 @@ p.addEventListener("click", function () {
     player.play();
     i.classList.remove("fa-play");
     i.classList.add("fa-pause");
-  } else {
+  } else if( !player.paused) {
     player.pause();
     i.classList.remove("fa-pause");
     i.classList.add("fa-play");
