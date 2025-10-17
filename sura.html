@@ -30,9 +30,9 @@
       </audio>
       <br>
       <div class="control">
-        <a id="prev"><i class="fas fa-caret-right"></i></a>
+        <a id="next"><i class="fas fa-caret-right"></i></a>
         <a id="play"><i id="pause" class="fa-solid fa-pause"></i></a>
-        <a id="next"><i class="fas fa-caret-left"></i></a>
+        <a id="prev"><i class="fas fa-caret-left"></i></a>
       </div>
       <br>
     </div>
@@ -95,8 +95,8 @@ let image = document.getElementById("img");
 let option = document.getElementById("option");
 let p = document.getElementById("play");
 let i=document.getElementById("pause");
-let next = document.getElementById("prev");
-let prev = document.getElementById("next");
+let next = document.getElementById("next");
+let prev = document.getElementById("prev");
 
 function getAudioUrl(suraNumber, reciter) {
   let padded = "";
