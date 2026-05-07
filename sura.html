@@ -1,285 +1,553 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" href="quran.png">
-   <meta name="description" content="القران الكريم بصوت الشيخ عبد الباسط عبد الصمد">
-   <meta name="keywords" content="القران الكريم, القران, الكريم, Quran">
-   <title>القران الكريم</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="quran.png">
+  <meta name="description" content="القران الكريم بصوت الشيخ عبد الباسط عبد الصمد">
+  <meta name="keywords" content="القران الكريم, القران, الكريم, Quran">
+  <title>القران الكريم</title>
 
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-   <link rel="stylesheet" href="sura.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="sura.css">
 
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px 0;
+    }
 
+    #sura-name {
+      color: #6ff17a !important;
+      font-size: 2.5rem !important;
+      font-weight: bolder;
+      text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 0 !important;
+      text-align: center;
+    }
+
+    .sura {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .image {
+      margin-bottom: 25px;
+    }
+
+    .image img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #6ff17a;
+      box-shadow: 0 0 25px rgba(111, 241, 122, 0.3);
+    }
+
+    audio {
+      width: 100%;
+      height: 45px;
+      border-radius: 10px;
+      outline: none;
+      margin-bottom: 20px;
+    }
+
+    audio::-webkit-media-controls-play-button {
+      display: none !important;
+    }
+
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+      font-size: 14px;
+    }
+
+    .control {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 10px 0;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 25px;
+    }
+
+    .control a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: #6ff17a;
+      color: #ffffff;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(111, 241, 122, 0.3);
+      font-family: Tahoma, sans-serif;
+      font-weight: bold;
+    }
+
+    #play {
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+    }
+
+    .control a:hover,
+    .control a:focus,
+    .control a:active {
+      color: #000000;
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(111, 241, 122, 0.6);
+      outline: none;
+    }
+
+    .active-repeat {
+      color: #000000 !important;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+    .options {
+      margin-top: 25px;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border: 2px solid #6ff17a;
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .back .btn {
+      background-color: #6ff17a;
+      color: #ffffff;
+      font-weight: bold;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      padding: 12px 30px;
+      transition: 0.3s;
+      border: none;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .back .btn:hover,
+    .back .btn:focus {
+      color: #000000;
+      box-shadow: 0 0 15px rgba(111, 241, 122, 0.5);
+      outline: none;
+    }
+
+    @media (max-width: 480px) {
+      #sura-name {
+        font-size: 2rem !important;
+      }
+
+      .sura {
+        padding: 30px 15px;
+        width: 95%;
+        border-radius: 20px;
+      }
+
+      .image img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .control {
+        gap: 10px;
+        padding: 15px 10px;
+      }
+
+      .control a {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+      }
+
+      #play {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .sura {
+        max-width: 600px;
+      }
+
+      .image img {
+        width: 240px;
+        height: 240px;
+      }
+
+      .control {
+        gap: 20px;
+      }
+
+      .control a {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+
+      #play {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
-<body>
-   <h2 id="sura-name" style="color: #6ff17a;   font-size: 35px; font-weight: bolder; padding: 53px;">
-      اسم السورة
-   </h2>
 
-   <div class="sura">
-      <div class="image">
-         <img src="abd-el-baset2.jpg" alt="الشيخ عبد الباسط" id="img" loading="lazy">
-      </div>
-      <div style="width: 100%;">
-      <audio id="audio-player" controls>
-         <source id="audio-source" src="https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/001.mp3" type="audio/mp3" >
-         متصفحك لا يدعم تشغيل الصوت
-      </audio>
-      <br>
-      <div class="control">
-        <a id="next"><i class="fas fa-caret-right"></i></a>
-        <a id="play"><i id="pause" class="fa-solid fa-pause"></i></a>
-        <a id="prev"><i class="fas fa-caret-left"></i></a>
-      </div>
-      <br>
+<body>
+  <h2 id="sura-name">اسم السورة</h2>
+
+  <div class="sura">
+    <div class="image">
+      <img src="abd-el-baset2.jpg" alt="صورة القارئ" id="img" loading="lazy">
     </div>
-       <div class="options">
+    <div style="width: 100%;">
+
+      <audio id="audio-player" controls controlsList="nodownload noplaybackrate">
+        <source id="audio-source" src="https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/001.mp3"
+          type="audio/mp3">
+        متصفحك لا يدعم تشغيل الصوت
+      </audio>
+
+      <div class="control">
+        <a id="normal-btn" class="active-repeat" href="#" title="تشغيل السورة التالية"><i
+            class="fas fa-list-ol"></i></a>
+        <a id="repeat-btn" href="#" title="تكرار السورة الحالية"><i class="fas fa-redo"></i></a>
+
+
+        <a id="next" href="#" title="التالي"><i class="fas fa-forward"></i></a>
+        <a id="play" href="#" title="تشغيل / إيقاف"><i id="pause" class="fa-solid fa-play"></i></a>
+        <a id="prev" href="#" title="السابق"><i class="fas fa-backward"></i></a>
+
+        <a id="download-btn" href="#" target="_blank" download title="تحميل السورة"><i class="fas fa-download"></i></a>
+        <a id="speed-btn" href="#" title="تغيير سرعة الصوت">1x</a>
+      </div>
+
+    </div>
+    <div class="options">
       <div class="back">
-         <a href="index.html" class="btn">الرجوع للقائمة</a>
+        <a href="index.html" class="btn">الرجوع للقائمة</a>
       </div>
       <select name="sheikh" id="option">
-        <option value="abd-el-basett" >عبد الباسط عبد الصمد مجود</option>
+        <option value="abd-el-basett">عبد الباسط عبد الصمد مجود</option>
         <option value="abd">عبد الباسط عبد الصمد مرتل</option>
-
         <option value="badr-el-Turki">بدر التركي</option>
         <option value="fares">فارس عباد</option>
         <option value="manshawy">المنشاوي</option>
         <option value="ayoub">محمد أيوب</option>
         <option value="mohamed">محمد الفقيه</option>
-        <option value="maher"> ماهر المعيقلي</option>
-        <option value="yasser"> ياسر الدوسري</option>
-        <option value="sodas"> عبد الرحمن السديس</option>
+        <option value="maher">ماهر المعيقلي</option>
+        <option value="yasser">ياسر الدوسري</option>
+        <option value="sodas">عبد الرحمن السديس</option>
         <option value="gaber">علي جابر</option>
-        <option value="nasser"> ناصر القطامي </option>
+        <option value="nasser">ناصر القطامي</option>
         <option value="saeed">سعد الغامدي</option>
         <option value="hossary">محمود خليل الحصري</option>
         <option value="ban">محمود علي البنا</option>
-       
-
-
-      </select></div>
-   </div>
-</body>
-</html>
+      </select>
+    </div>
+  </div>
 
   <script>
-   const params = new URLSearchParams(window.location.search);
-const sura = params.get("sura");
+    const params = new URLSearchParams(window.location.search);
+    let sura = params.get("sura");
 
-const suras = [
-  "الفاتحه", "البقرة", "آل-عمران", "النساء", "المائدة", "الأنعام", "الأعراف",
-  "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "ابراهيم", "الحجر",
-  "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون",
-  "النّور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان",
-  "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر",
-  "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح",
-  "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة",
-  "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون",
-  "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح",
-  "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات",
-  "عبس", "التكوير", "الإنفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى",
-  "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق",
-  "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة",
-  "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص",
-  "الفلق", "الناس"
-];
+    // ===== التعديل هنا: جلب السورة المحفوظة من الـ Local Storage لو مش موجودة في الرابط =====
+    if (!sura && localStorage.getItem("savedSura")) {
+      sura = localStorage.getItem("savedSura");
+    }
 
-let currentIndex = suras.indexOf(sura);
-let suraNumber = currentIndex + 1;
-let reciter = "abd-el-basett"; // default
+    const suras = [
+      "الفاتحه", "البقرة", "آل-عمران", "النساء", "المائدة", "الأنعام", "الأعراف",
+      "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "ابراهيم", "الحجر",
+      "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون",
+      "النّور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان",
+      "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر",
+      "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح",
+      "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة",
+      "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون",
+      "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح",
+      "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات",
+      "عبس", "التكوير", "الإنفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى",
+      "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق",
+      "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة",
+      "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص",
+      "الفلق", "الناس"
+    ];
 
-let image = document.getElementById("img");
-let option = document.getElementById("option");
-let p = document.getElementById("play");
-let i=document.getElementById("pause");
-let next = document.getElementById("next");
-let prev = document.getElementById("prev");
+    let currentIndex = suras.indexOf(sura);
+    if (currentIndex === -1) currentIndex = 0;
 
-function getAudioUrl(suraNumber, reciter) {
-  let padded = "";
-  if (suraNumber <= 9) padded = "00" + suraNumber;
-  else if (suraNumber <= 99) padded = "0" + suraNumber;
-  else padded = "" + suraNumber;
+    let suraNumber = currentIndex + 1;
+    let reciter = "abd-el-basett";
 
-  if (reciter === "abd-el-basett") {
-    return `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${padded}.mp3`;
-  }
-  else if (reciter === "abd") {/*https://server7.mp3quran.net/basit/002.mp3*/
-    return `https://server7.mp3quran.net/basit/${padded}.mp3`;
-  }
-  else if (reciter === "badr-el-Turki") {
-    return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
-  }
-  else if (reciter === "fares"){
-    return `https://server8.mp3quran.net/frs_a/${padded}.mp3`;
-  }
-  else if( reciter === "manshawy"){
-    return `https://server10.mp3quran.net/minsh/${padded}.mp3`;
-  }
-  else if( reciter === "ayoub"){
-    return `https://server8.mp3quran.net/ayyub/${padded}.mp3`;
-  }
-  else if( reciter === "mohamed"){
-    return `https://ia801301.us.archive.org/12/items/002_20231230/${padded}.mp3`;
-  }
-  else if( reciter === "maher"){
-    return `https://server12.mp3quran.net/maher/${padded}.mp3`;
-  }
-  else if( reciter === "yasser"){
-    return `https://server11.mp3quran.net/yasser/${padded}.mp3`;
-  }
-  else if( reciter === "sodas"){
-    return `https://server11.mp3quran.net/sds/${padded}.mp3`;
-  }
-  else if(reciter=="gaber"){
-    return `https://server11.mp3quran.net/a_jbr/${padded}.mp3`;
-  }
-  else if(reciter=="nasser"){
-    return `https://server6.mp3quran.net/qtm/${padded}.mp3`;
-  }
-  else if(reciter=="saeed"){
-    return`https://server7.mp3quran.net/s_gmd/${padded}.mp3`;
-  }
-  else if(reciter=="hossary"){
-    return `https://server13.mp3quran.net/husr/${padded}.mp3`;
-  }
-  else if(reciter=="ban"){
-    return `https://archive.org/download/golmami2005_yahoo_002_20180411_2112/${padded}.mp3`;
-  }
-}
+    if (localStorage.getItem("savedReciter")) {
+      reciter = localStorage.getItem("savedReciter");
+    }
 
-function updatePlayer(suraName) {
-  document.getElementById("sura-name").textContent = "سورة " + suraName;
-  const url = getAudioUrl(suraNumber, reciter);
-  document.getElementById("audio-source").src = url;
+    let image = document.getElementById("img");
+    let option = document.getElementById("option");
+    let p = document.getElementById("play");
+    let i = document.getElementById("pause");
+    let next = document.getElementById("next");
+    let prev = document.getElementById("prev");
 
-  const player = document.getElementById("audio-player");
-  player.load();
-  player.play();
-  i.classList.remove("fa-play");
-  i.classList.add("fa-pause");
-}
-p.addEventListener("click", function () {
-  const player = document.getElementById("audio-player");
-  if (player.paused) {
-    player.play();
-    i.classList.remove("fa-play");
-    i.classList.add("fa-pause");
-  } else if( !player.paused) {
-    player.pause();
-    i.classList.remove("fa-pause");
-    i.classList.add("fa-play");
-  }
+    let downloadBtn = document.getElementById("download-btn");
+    let speedBtn = document.getElementById("speed-btn");
+    let speeds = [1, 1.25, 1.5, 2, 0.5];
+    let speedIndex = 0;
 
-})
-next.addEventListener("click", function () {
-  currentIndex++;
-  if (currentIndex < suras.length) {
-    suraNumber = currentIndex + 1;
+    option.value = reciter;
+
+    function updateReciterImage(selectedReciter) {
+      if (selectedReciter === "abd-el-basett") {
+        image.setAttribute("src", "abd-el-baset2.jpg");
+      } else if (selectedReciter === "abd") {
+        image.setAttribute("src", "abd-el-baset1.jpg");
+      } else if (selectedReciter === "badr-el-Turki") {
+        image.setAttribute("src", "badr2.jpg");
+      } else if (selectedReciter === "fares") {
+        image.setAttribute("src", "fares.jpg");
+      } else if (selectedReciter === "manshawy") {
+        image.setAttribute("src", "menshawy.jpg");
+      } else if (selectedReciter === "ayoub") {
+        image.setAttribute("src", "mohamed.jpg");
+      } else if (selectedReciter === "mohamed") {
+        image.setAttribute("src", "mf.png");
+      } else if (selectedReciter === "maher") {
+        image.setAttribute("src", "maher.png");
+      } else if (selectedReciter === "yasser") {
+        image.setAttribute("src", "yasser.png");
+      } else if (selectedReciter === "sodas") {
+        image.setAttribute("src", "https://s-media-cache-ak0.pinimg.com/564x/83/9f/a1/839fa1a43d6988809d0796f619eba1c8.jpg");
+      } else if (selectedReciter == "gaber") {
+        image.setAttribute("src", "https://i.pinimg.com/564x/43/57/d3/4357d32cc152d4e3b8f8c37fd525b806.jpg");
+      } else if (selectedReciter == "nasser") {
+        image.setAttribute("src", "https://i.pinimg.com/564x/6f/2d/35/6f2d3586e913233f1f03ade207398949.jpg");
+      } else if (selectedReciter == "saeed") {
+        image.setAttribute("src", "https://i.pinimg.com/564x/14/56/7f/14567fa0c053c4f29d6b0e606f232424.jpg");
+      } else if (selectedReciter == "hossary") {
+        image.setAttribute("src", "https://i.pinimg.com/564x/ed/51/28/ed51283cc159958f430a484d87606738.jpg");
+      } else if (selectedReciter == "ban") {
+        image.setAttribute("src", "https://i.pinimg.com/564x/29/67/b3/2967b3fbc1ce1f5a70874288d34317bf.jpg");
+      }
+    }
+
+    updateReciterImage(reciter);
+
+    function getAudioUrl(suraNumber, reciter) {
+      let padded = "";
+      if (suraNumber <= 9) padded = "00" + suraNumber;
+      else if (suraNumber <= 99) padded = "0" + suraNumber;
+      else padded = "" + suraNumber;
+
+      if (reciter === "abd-el-basett") {
+        return `https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad/${padded}.mp3`;
+      }
+      else if (reciter === "abd") {
+        return `https://server7.mp3quran.net/basit/${padded}.mp3`;
+      }
+      else if (reciter === "badr-el-Turki") {
+        return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
+      }
+      else if (reciter === "fares") {
+        return `https://server8.mp3quran.net/frs_a/${padded}.mp3`;
+      }
+      else if (reciter === "manshawy") {
+        return `https://server10.mp3quran.net/minsh/${padded}.mp3`;
+      }
+      else if (reciter === "ayoub") {
+        return `https://server8.mp3quran.net/ayyub/${padded}.mp3`;
+      }
+      else if (reciter === "mohamed") {
+        return `https://ia801301.us.archive.org/12/items/002_20231230/${padded}.mp3`;
+      }
+      else if (reciter === "maher") {
+        return `https://server12.mp3quran.net/maher/${padded}.mp3`;
+      }
+      else if (reciter === "yasser") {
+        return `https://server11.mp3quran.net/yasser/${padded}.mp3`;
+      }
+      else if (reciter === "sodas") {
+        return `https://server11.mp3quran.net/sds/${padded}.mp3`;
+      }
+      else if (reciter == "gaber") {
+        return `https://server11.mp3quran.net/a_jbr/${padded}.mp3`;
+      }
+      else if (reciter == "nasser") {
+        return `https://server6.mp3quran.net/qtm/${padded}.mp3`;
+      }
+      else if (reciter == "saeed") {
+        return `https://server7.mp3quran.net/s_gmd/${padded}.mp3`;
+      }
+      else if (reciter == "hossary") {
+        return `https://server13.mp3quran.net/husr/${padded}.mp3`;
+      }
+      else if (reciter == "ban") {
+        return `https://archive.org/download/golmami2005_yahoo_002_20180411_2112/${padded}.mp3`;
+      }
+    }
+
+    function updatePlayer(suraName) {
+      document.getElementById("sura-name").textContent = "سورة " + suraName;
+      const url = getAudioUrl(suraNumber, reciter);
+
+      const audioSource = document.getElementById("audio-source");
+      audioSource.src = url;
+
+      downloadBtn.href = url;
+
+      // ===== التعديل هنا: حفظ السورة وتحديث الرابط =====
+      localStorage.setItem("savedSura", suraName);
+      window.history.replaceState(null, null, "?sura=" + suraName);
+      // =================================================
+
+      const player = document.getElementById("audio-player");
+      player.load();
+      player.play();
+
+      player.playbackRate = speeds[speedIndex];
+
+      i.classList.remove("fa-play");
+      i.classList.add("fa-pause");
+    }
+
+    p.addEventListener("click", function (e) {
+      e.preventDefault();
+      const player = document.getElementById("audio-player");
+      if (player.paused) {
+        player.play();
+        i.classList.remove("fa-play");
+        i.classList.add("fa-pause");
+      } else {
+        player.pause();
+        i.classList.remove("fa-pause");
+        i.classList.add("fa-play");
+      }
+    });
+
+    next.addEventListener("click", function (e) {
+      e.preventDefault();
+      currentIndex++;
+      if (currentIndex >= suras.length) {
+        currentIndex = 0;
+      }
+      suraNumber = currentIndex + 1;
+      updatePlayer(suras[currentIndex]);
+    });
+
+    prev.addEventListener("click", function (e) {
+      e.preventDefault();
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = suras.length - 1;
+      }
+      suraNumber = currentIndex + 1;
+      updatePlayer(suras[currentIndex]);
+    });
+
+    speedBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      speedIndex = (speedIndex + 1) % speeds.length;
+      let currentSpeed = speeds[speedIndex];
+
+      document.getElementById("audio-player").playbackRate = currentSpeed;
+      speedBtn.textContent = currentSpeed + "x";
+    });
+
     updatePlayer(suras[currentIndex]);
-  }
-});
 
-prev.addEventListener("click", function () {
-  currentIndex--;
-  if (currentIndex >= 0) {
-    suraNumber = currentIndex + 1;
-    updatePlayer(suras[currentIndex]);
-  }
-  else{
-    
-  }
-})
+    let isRepeatMode = false;
+    let repeatBtn = document.getElementById("repeat-btn");
+    let normalBtn = document.getElementById("normal-btn");
 
-function changeSura(suraName) {
-  currentIndex = suras.indexOf(suraName);
-  suraNumber = currentIndex + 1;
-  updatePlayer(suraName);
-}
+    repeatBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      isRepeatMode = true;
+      repeatBtn.classList.add("active-repeat");
+      normalBtn.classList.remove("active-repeat");
+    });
 
-if (currentIndex !== -1) {// this line checks if currentIndex is not equal to -1
-  updatePlayer(suras[currentIndex]);
-}
+    normalBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      isRepeatMode = false;
+      normalBtn.classList.add("active-repeat");
+      repeatBtn.classList.remove("active-repeat");
+    });
 
-document.getElementById("audio-player").addEventListener("ended", function () {
-  currentIndex++;
-  if (currentIndex < suras.length) {
-    suraNumber = currentIndex + 1;
-    updatePlayer(suras[currentIndex]);
-  }
-});
+    document.getElementById("audio-player").addEventListener("ended", function () {
+      if (isRepeatMode) {
+        updatePlayer(suras[currentIndex]);
+      } else {
+        currentIndex++;
+        if (currentIndex >= suras.length) {
+          currentIndex = 0;
+        }
+        suraNumber = currentIndex + 1;
+        updatePlayer(suras[currentIndex]);
+      }
+    });
 
-let play = document.getElementById("audio-player");
+    let play = document.getElementById("audio-player");
 
-play.addEventListener("pause", function () {
-  image.style.animationPlayState = "paused";
-  i.classList.remove("fa-pause");
-  i.classList.add("fa-play"); 
-});
+    play.addEventListener("pause", function () {
+      i.classList.remove("fa-pause");
+      i.classList.add("fa-play");
+    });
 
-play.addEventListener("playing", function () {
-  image.style.animationPlayState = "running";
-  i.classList.remove("fa-play");
-  i.classList.add("fa-pause");
-});
+    play.addEventListener("playing", function () {
+      i.classList.remove("fa-play");
+      i.classList.add("fa-pause");
+    });
 
-option.addEventListener("change", function () {
-  reciter = option.value;
-
-  if (reciter === "abd-el-basett") {
-    image.setAttribute("src", "abd-el-baset2.jpg");
-  }
-  
-  else if (reciter === "abd") {
-    image.setAttribute("src", "abd-el-baset1.jpg");
-  }
-  else if (reciter === "badr-el-Turki") {
-    image.setAttribute("src", "badr2.jpg");
-  }
-  else if (reciter === "fares"){
-    image.setAttribute("src", "fares.jpg");
-  }
-  else if( reciter === "manshawy"){
-    image.setAttribute("src", "menshawy.jpg");
-  }
-  else if( reciter === "ayoub"){
-    image.setAttribute("src", "mohamed.jpg");
-  }
-  else if( reciter === "mohamed"){
-    image.setAttribute("src", "mf.png");
-  }
-  else if( reciter === "maher"){
-    image.setAttribute("src", "maher.png");
-  }
-  else if( reciter === "yasser"){
-    image.setAttribute("src", "yasser.png");
-  }
-  else if( reciter === "sodas"){
-    image.setAttribute("src", "https://s-media-cache-ak0.pinimg.com/564x/83/9f/a1/839fa1a43d6988809d0796f619eba1c8.jpg");
-  }
-  else if(reciter=="gaber"){
-    image.setAttribute("src", "https://i.pinimg.com/564x/43/57/d3/4357d32cc152d4e3b8f8c37fd525b806.jpg");
-  }
-  else if(reciter=="nasser"){
-    image.setAttribute("src", "https://i.pinimg.com/564x/6f/2d/35/6f2d3586e913233f1f03ade207398949.jpg");
-  }
-  else if(reciter=="saeed"){
-    image.setAttribute("src", "https://i.pinimg.com/564x/14/56/7f/14567fa0c053c4f29d6b0e606f232424.jpg");
-  }
-  else if(reciter=="hossary"){
-    image.setAttribute("src", "https://i.pinimg.com/564x/ed/51/28/ed51283cc159958f430a484d87606738.jpg");
-  }
-  else if(reciter=="ban"){
-    image.setAttribute("src", "https://i.pinimg.com/564x/29/67/b3/2967b3fbc1ce1f5a70874288d34317bf.jpg");
-  }
-  updatePlayer(suras[currentIndex]);
-});
-
-
+    option.addEventListener("change", function () {
+      reciter = option.value;
+      localStorage.setItem("savedReciter", reciter);
+      updateReciterImage(reciter);
+      updatePlayer(suras[currentIndex]);
+    });
 
   </script>
 </body>
+
 </html>
