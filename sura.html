@@ -271,6 +271,7 @@
       <select name="sheikh" id="option">
         <option value="abd-el-basett">عبد الباسط عبد الصمد مجود</option>
         <option value="abd">عبد الباسط عبد الصمد مرتل</option>
+        <option value="abdullah-musa">عبد الله موسى</option>
         <option value="badr-el-Turki">بدر التركي</option>
         <option value="fares">فارس عباد</option>
         <option value="manshawy">المنشاوي</option>
@@ -292,7 +293,6 @@
     const params = new URLSearchParams(window.location.search);
     let sura = params.get("sura");
 
-    // ===== التعديل هنا: جلب السورة المحفوظة من الـ Local Storage لو مش موجودة في الرابط =====
     if (!sura && localStorage.getItem("savedSura")) {
       sura = localStorage.getItem("savedSura");
     }
@@ -344,6 +344,8 @@
         image.setAttribute("src", "abd-el-baset2.jpg");
       } else if (selectedReciter === "abd") {
         image.setAttribute("src", "abd-el-baset1.jpg");
+      } else if (selectedReciter === "abdullah-musa") { // الإضافة هنا
+        image.setAttribute("src", "https://i.pinimg.com/564x/1b/46/67/1b46679a51ec1d92d549c83ebed185e5.jpg");
       } else if (selectedReciter === "badr-el-Turki") {
         image.setAttribute("src", "badr2.jpg");
       } else if (selectedReciter === "fares") {
@@ -386,6 +388,9 @@
       }
       else if (reciter === "abd") {
         return `https://server7.mp3quran.net/basit/${padded}.mp3`;
+      }
+      else if (reciter === "abdullah-musa") { // الإضافة هنا
+        return `https://server14.mp3quran.net/mousa/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
       }
       else if (reciter === "badr-el-Turki") {
         return `https://server10.mp3quran.net/bader/Rewayat-Hafs-A-n-Assem/${padded}.mp3`;
@@ -437,10 +442,8 @@
 
       downloadBtn.href = url;
 
-      // ===== التعديل هنا: حفظ السورة وتحديث الرابط =====
       localStorage.setItem("savedSura", suraName);
       window.history.replaceState(null, null, "?sura=" + suraName);
-      // =================================================
 
       const player = document.getElementById("audio-player");
       player.load();
