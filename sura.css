@@ -157,6 +157,8 @@ audio::-webkit-media-controls-panel {
 
 .back .btn:hover:after {
   height: 100%;
+  border-radius: 20px;
+
 }
 
 .back .btn:active {

@@ -118,6 +118,7 @@ h1 {
 .sura-list a:hover:after {
     top: 0;
     height: 100%;
+    border-radius: 15px;
 }
 
 .sura-list a:active {
